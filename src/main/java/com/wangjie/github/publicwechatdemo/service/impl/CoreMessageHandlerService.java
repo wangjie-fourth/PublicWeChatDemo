@@ -19,7 +19,7 @@ public class CoreMessageHandlerService {
     /**
      * 处理微信发来的请求
      *
-     * @param request   http请求
+     * @param request http请求
      * @return xml
      */
     public static String processRequest(HttpServletRequest request) {
@@ -47,53 +47,31 @@ public class CoreMessageHandlerService {
             // 文本消息
             if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_TEXT)) {
                 respContent = "您发送的是文本消息！";
-            }
-            // 图片消息
-            else if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_IMAGE)) {
+            } else if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_IMAGE)) { // 图片消息
                 respContent = "您发送的是图片消息！";
-            }
-            // 语音消息
-            else if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_VOICE)) {
+            } else if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_VOICE)) { // 语音消息
                 respContent = "您发送的是语音消息！";
-            }
-            // 视频消息
-            else if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_VIDEO)) {
+            } else if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_VIDEO)) { // 视频消息
                 respContent = "您发送的是视频消息！";
-            }
-            // 视频消息
-            else if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_SHORTVIDEO)) {
+            } else if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_SHORTVIDEO)) {// 视频消息
                 respContent = "您发送的是小视频消息！";
-            }
-            // 地理位置消息
-            else if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_LOCATION)) {
+            } else if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_LOCATION)) {// 地理位置消息
                 respContent = "您发送的是地理位置消息！";
-            }
-            // 链接消息
-            else if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_LINK)) {
+            } else if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_LINK)) {// 链接消息
                 respContent = "您发送的是链接消息！";
-            }
-            // 事件推送
-            else if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_EVENT)) {
+            } else if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_EVENT)) {// 事件推送
                 // 事件类型
                 String eventType = requestMap.get("Event");
                 // 关注
                 if (eventType.equals(MessageUtil.EVENT_TYPE_SUBSCRIBE)) {
                     respContent = "谢谢您的关注！";
-                }
-                // 取消关注
-                else if (eventType.equals(MessageUtil.EVENT_TYPE_UNSUBSCRIBE)) {
+                } else if (eventType.equals(MessageUtil.EVENT_TYPE_UNSUBSCRIBE)) {// 取消关注
                     // TODO 取消订阅后用户不会再收到公众账号发送的消息，因此不需要回复
-                }
-                // 扫描带参数二维码
-                else if (eventType.equals(MessageUtil.EVENT_TYPE_SCAN)) {
+                } else if (eventType.equals(MessageUtil.EVENT_TYPE_SCAN)) {// 扫描带参数二维码
                     // TODO 处理扫描带参数二维码事件
-                }
-                // 上报地理位置
-                else if (eventType.equals(MessageUtil.EVENT_TYPE_LOCATION)) {
+                } else if (eventType.equals(MessageUtil.EVENT_TYPE_LOCATION)) {// 上报地理位置
                     // TODO 处理上报地理位置事件
-                }
-                // 自定义菜单
-                else if (eventType.equals(MessageUtil.EVENT_TYPE_CLICK)) {
+                } else if (eventType.equals(MessageUtil.EVENT_TYPE_CLICK)) {// 自定义菜单
                     // TODO 处理菜单点击事件
                 }
             }

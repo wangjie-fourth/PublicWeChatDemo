@@ -1,6 +1,7 @@
 package com.wangjie.github.publicwechatdemo.messagedomain.requset;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @ClassName VideoMessage
@@ -9,7 +10,8 @@ import lombok.Data;
  * @Date 2019/9/7 12:52
  * @Email jie.wang13@hand-china.com
  **/
-@Data
+@Getter
+@Setter
 public class VideoMessageRqeuest extends RqeuestBaseMessage {
     // 媒体ID
     private String MediaId;

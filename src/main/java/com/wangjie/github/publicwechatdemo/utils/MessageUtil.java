@@ -201,7 +201,7 @@ public class MessageUtil {
      */
     public static String messageToXml(NewsMessage newsMessage) {
         xstream.alias("xml", newsMessage.getClass());
-        xstream.alias("item", new Article().getClass());
+        xstream.alias("item", Article.class);
         return xstream.toXML(newsMessage);
     }
 }

@@ -1,6 +1,7 @@
 package com.wangjie.github.publicwechatdemo.messagedomain.requset;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @ClassName LinkMessage
@@ -9,7 +10,8 @@ import lombok.Data;
  * @Date 2019/9/7 12:53
  * @Email jie.wang13@hand-china.com
  **/
-@Data
+@Getter
+@Setter
 public class LinkMessageRqeuest extends RqeuestBaseMessage {
     // 消息标题
     private String Title;

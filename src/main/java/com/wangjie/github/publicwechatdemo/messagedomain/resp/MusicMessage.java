@@ -1,6 +1,7 @@
 package com.wangjie.github.publicwechatdemo.messagedomain.resp;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @ClassName MusicMessage
@@ -9,7 +10,8 @@ import lombok.Data;
  * @Date 2019/9/7 13:09
  * @Email jie.wang13@hand-china.com
  **/
-@Data
+@Getter
+@Setter
 public class MusicMessage extends RespBaseMessage {
     // 音乐
     private Music Music;

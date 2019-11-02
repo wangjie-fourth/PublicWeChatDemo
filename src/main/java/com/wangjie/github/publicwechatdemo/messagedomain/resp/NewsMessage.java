@@ -1,6 +1,7 @@
 package com.wangjie.github.publicwechatdemo.messagedomain.resp;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
@@ -11,7 +12,8 @@ import java.util.List;
  * @Date 2019/9/7 13:10
  * @Email jie.wang13@hand-china.com
  **/
-@Data
+@Getter
+@Setter
 public class NewsMessage extends RespBaseMessage {
     // 图文消息个数，限制为10条以内
     private int ArticleCount;

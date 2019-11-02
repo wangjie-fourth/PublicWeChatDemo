@@ -80,8 +80,8 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <id>verify</id>
-                        <phase>verify</phase>
+                        <id>compile</id>
+                        <phase>compile</phase>
                         <goals>
                             <goal>check</goal>
                         </goals>
@@ -110,7 +110,7 @@
                 <executions>
                     <execution>
                         <id>spotbugs</id>
-                        <phase>verify</phase>
+                        <phase>compile</phase>
                         <goals>
                             <goal>check</goal>
                         </goals>

@@ -1,6 +1,7 @@
 package com.wangjie.github.publicwechatdemo.messagedomain.requset;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @ClassName ImageMessage
@@ -9,7 +10,8 @@ import lombok.Data;
  * @Date 2019/9/7 12:51
  * @Email jie.wang13@hand-china.com
  **/
-@Data
+@Getter
+@Setter
 public class ImageMessageRqeuest extends RqeuestBaseMessage {
     // 图片链接
     private String PicUrl;

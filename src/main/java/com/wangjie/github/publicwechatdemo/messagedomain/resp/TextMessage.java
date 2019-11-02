@@ -1,6 +1,7 @@
 package com.wangjie.github.publicwechatdemo.messagedomain.resp;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @ClassName TextMessage
@@ -9,7 +10,8 @@ import lombok.Data;
  * @Date 2019/9/7 13:05
  * @Email jie.wang13@hand-china.com
  **/
-@Data
+@Getter
+@Setter
 public class TextMessage extends RespBaseMessage {
     // 回复的消息内容
     private String Content;

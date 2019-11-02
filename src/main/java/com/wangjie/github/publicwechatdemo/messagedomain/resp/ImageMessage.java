@@ -1,6 +1,7 @@
 package com.wangjie.github.publicwechatdemo.messagedomain.resp;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @ClassName ImageMessage
@@ -9,7 +10,8 @@ import lombok.Data;
  * @Date 2019/9/7 13:06
  * @Email jie.wang13@hand-china.com
  **/
-@Data
+@Getter
+@Setter
 public class ImageMessage extends RespBaseMessage {
     private Image Image;
 }
