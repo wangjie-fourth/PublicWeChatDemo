@@ -2,6 +2,7 @@ package com.wangjie.github.publicwechatdemo.controller;
 
 import com.wangjie.github.publicwechatdemo.service.impl.CoreMessageHandlerService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,6 +22,9 @@ import java.io.PrintWriter;
 @Slf4j
 public class PublicWeChatMessageHandlerController {
 
+    @Autowired
+    private CoreMessageHandlerService coreMessageHandlerService;
+
     /**
      * 处理微信服务器发来的消息
      *
@@ -36,7 +40,7 @@ public class PublicWeChatMessageHandlerController {
         response.setCharacterEncoding("UTF-8");
 
         // 调用核心业务类接收消息、处理消息
-        String respXml = CoreMessageHandlerService.processRequest(request);
+        String respXml = coreMessageHandlerService.processRequest(request);
 
         // 响应消息
         PrintWriter out = response.getWriter();

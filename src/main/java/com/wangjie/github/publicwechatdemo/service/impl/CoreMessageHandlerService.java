@@ -1,7 +1,11 @@
 package com.wangjie.github.publicwechatdemo.service.impl;
 
+import com.wangjie.github.publicwechatdemo.messagedomain.requset.TextMessageRqeuest;
 import com.wangjie.github.publicwechatdemo.messagedomain.resp.TextMessage;
+import com.wangjie.github.publicwechatdemo.service.StringMessageService;
 import com.wangjie.github.publicwechatdemo.utils.MessageUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
@@ -14,7 +18,11 @@ import java.util.Map;
  * @Date 2019/11/2 14:15
  * @Email jie.wang13@hand-china.com
  **/
+@Service
 public class CoreMessageHandlerService {
+
+    @Autowired
+    private StringMessageService stringMessageService;
 
     /**
      * 处理微信发来的请求
@@ -22,7 +30,7 @@ public class CoreMessageHandlerService {
      * @param request http请求
      * @return xml
      */
-    public static String processRequest(HttpServletRequest request) {
+    public String processRequest(HttpServletRequest request) {
         // xml格式的消息数据
         String respXml = null;
         // 默认返回的文本消息内容
@@ -36,6 +44,11 @@ public class CoreMessageHandlerService {
             String toUserName = requestMap.get("ToUserName");
             // 消息类型
             String msgType = requestMap.get("MsgType");
+            // 发起时间
+            Long createTime = Long.parseLong(requestMap.get("CreateTime"));
+            // 消息id
+            Long msgId = Long.parseLong(requestMap.get("MsgId"));
+
 
             // 回复文本消息
             TextMessage textMessage = new TextMessage();
@@ -46,7 +59,18 @@ public class CoreMessageHandlerService {
 
             // 文本消息
             if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_TEXT)) {
-                respContent = "您发送的是文本消息！";
+                // 发送的内容
+                String content = requestMap.get("Content");
+                TextMessageRqeuest textMessageRqeuest = new TextMessageRqeuest();
+                textMessage.setCreateTime(createTime);
+                textMessageRqeuest.setContent(content);
+                textMessageRqeuest.setFromUserName(fromUserName);
+                textMessageRqeuest.setToUserName(toUserName);
+                textMessageRqeuest.setMsgType(msgType);
+                textMessageRqeuest.setMsgId(msgId);
+
+                // 获取返回消息
+                respContent = stringMessageService.handleStringMessage(textMessageRqeuest);
             } else if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_IMAGE)) { // 图片消息
                 respContent = "您发送的是图片消息！";
             } else if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_VOICE)) { // 语音消息
