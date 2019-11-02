@@ -1,6 +1,7 @@
 package com.wangjie.github.publicwechatdemo;
 
 import com.wangjie.github.publicwechatdemo.utils.SignUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @RestController
+@Slf4j
 public class PublicWeChatDemoApplication {
 
     public static void main(String[] args) {
@@ -32,6 +34,7 @@ public class PublicWeChatDemoApplication {
             @RequestParam("echostr") String echostr
     ) {
         // 通过检验signature对请求进行校验，若校验成功则原样返回echostr，表示接入成功，否则接入失败
+        log.info("验证信息了");
         if (SignUtil.checkSignature(signature, timestamp, nonce)) {
             return echostr;
         }
