@@ -5,7 +5,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -21,16 +20,16 @@ import java.io.PrintWriter;
 @RestController
 @Slf4j
 public class PublicWeChatMessageHandlerController {
+
     /**
      * 处理微信服务器发来的消息
      *
-     * @param request   http请求
-     * @param response  http响应
-     * @throws ServletException
-     * @throws IOException
+     * @param request  http请求
+     * @param response http响应
+     * @throws IOException  IO异常
      */
     @PostMapping("/verification")
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         // 消息的接收、处理、响应
         // 将请求、响应的编码均设置为UTF-8（防止中文乱码）
         request.setCharacterEncoding("UTF-8");

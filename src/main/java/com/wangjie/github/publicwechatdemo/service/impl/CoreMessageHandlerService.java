@@ -19,7 +19,7 @@ public class CoreMessageHandlerService {
     /**
      * 处理微信发来的请求
      *
-     * @param request
+     * @param request   http请求
      * @return xml
      */
     public static String processRequest(HttpServletRequest request) {

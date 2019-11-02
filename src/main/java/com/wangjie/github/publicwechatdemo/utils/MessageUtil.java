@@ -7,7 +7,14 @@ import com.thoughtworks.xstream.core.util.QuickWriter;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 import com.thoughtworks.xstream.io.xml.PrettyPrintWriter;
 import com.thoughtworks.xstream.io.xml.XppDriver;
-import com.wangjie.github.publicwechatdemo.messagedomain.resp.*;
+
+import com.wangjie.github.publicwechatdemo.messagedomain.resp.ImageMessage;
+import com.wangjie.github.publicwechatdemo.messagedomain.resp.TextMessage;
+import com.wangjie.github.publicwechatdemo.messagedomain.resp.VideoMessage;
+import com.wangjie.github.publicwechatdemo.messagedomain.resp.VoiceMessage;
+import com.wangjie.github.publicwechatdemo.messagedomain.resp.MusicMessage;
+import com.wangjie.github.publicwechatdemo.messagedomain.resp.NewsMessage;
+import com.wangjie.github.publicwechatdemo.messagedomain.resp.Article;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
@@ -73,9 +80,9 @@ public class MessageUtil {
     /**
      * 解析微信发来的请求（XML）
      *
-     * @param request
+     * @param request   http请求
      * @return Map<String, String>
-     * @throws Exception
+     * @throws Exception    异常
      */
     @SuppressWarnings("unchecked")
     public static Map<String, String> parseXml(HttpServletRequest request) throws Exception {
@@ -93,8 +100,9 @@ public class MessageUtil {
         List<Element> elementList = root.elements();
 
         // 遍历所有子节点
-        for (Element e : elementList)
+        for (Element e : elementList){
             map.put(e.getName(), e.getText());
+        }
 
         // 释放资源
         inputStream.close();
