@@ -62,7 +62,7 @@ public class CoreMessageHandlerService {
                 // 发送的内容
                 String content = requestMap.get("Content");
                 TextMessageRqeuest textMessageRqeuest = new TextMessageRqeuest();
-                textMessage.setCreateTime(createTime);
+                textMessageRqeuest.setCreateTime(createTime);
                 textMessageRqeuest.setContent(content);
                 textMessageRqeuest.setFromUserName(fromUserName);
                 textMessageRqeuest.setToUserName(toUserName);
