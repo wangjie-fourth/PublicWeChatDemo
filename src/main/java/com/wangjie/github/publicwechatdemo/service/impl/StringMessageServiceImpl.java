@@ -19,11 +19,11 @@ import java.util.List;
  * @Date 2019/11/2 17:13
  * @Email jie.wang13@hand-china.com
  **/
-@Service
+//@Service
 @Slf4j
 public class StringMessageServiceImpl implements StringMessageService {
 
-    @Autowired
+//    @Autowired
     private MessageRecordDao messageRecordDao;
 
     @Override

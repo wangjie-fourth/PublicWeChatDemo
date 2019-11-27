@@ -13,7 +13,7 @@ import java.util.Arrays;
  **/
 public class SignUtil {
     // 与接口配置信息中的Token要一致
-    private static String token = "publicwechatdemo18856435267";
+    private static String token = "publicwechatdemo18856435267wj";
     private static String EncodingAESKey = "VnGGNPCUPn2dsZ95pBdQsZtrCE60sAGjbDU59aIcwL3";
 
     /**

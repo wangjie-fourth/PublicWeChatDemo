@@ -1,11 +1,10 @@
 package com.wangjie.github.publicwechatdemo.service.impl;
 
 import com.wangjie.github.publicwechatdemo.messagedomain.requset.TextMessageRqeuest;
-import com.wangjie.github.publicwechatdemo.messagedomain.resp.TextMessage;
+import com.wangjie.github.publicwechatdemo.domain.TextMessage;
 import com.wangjie.github.publicwechatdemo.service.StringMessageService;
 import com.wangjie.github.publicwechatdemo.utils.MessageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
@@ -18,7 +17,7 @@ import java.util.Map;
  * @Date 2019/11/2 14:15
  * @Email jie.wang13@hand-china.com
  **/
-@Service
+//@Service
 public class CoreMessageHandlerService {
 
     @Autowired

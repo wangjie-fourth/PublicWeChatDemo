@@ -8,13 +8,7 @@ import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 import com.thoughtworks.xstream.io.xml.PrettyPrintWriter;
 import com.thoughtworks.xstream.io.xml.XppDriver;
 
-import com.wangjie.github.publicwechatdemo.messagedomain.resp.ImageMessage;
-import com.wangjie.github.publicwechatdemo.messagedomain.resp.TextMessage;
-import com.wangjie.github.publicwechatdemo.messagedomain.resp.VideoMessage;
-import com.wangjie.github.publicwechatdemo.messagedomain.resp.VoiceMessage;
-import com.wangjie.github.publicwechatdemo.messagedomain.resp.MusicMessage;
-import com.wangjie.github.publicwechatdemo.messagedomain.resp.NewsMessage;
-import com.wangjie.github.publicwechatdemo.messagedomain.resp.Article;
+import com.wangjie.github.publicwechatdemo.domain.TextMessage;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;

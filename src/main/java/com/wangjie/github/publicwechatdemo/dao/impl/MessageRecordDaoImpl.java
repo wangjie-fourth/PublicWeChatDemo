@@ -22,7 +22,7 @@ import java.sql.ResultSet;
  * @Date 2019/11/5 19:22
  * @Email jie.wang13@hand-china.com
  **/
-@Repository
+//@Repository
 @Slf4j
 public class MessageRecordDaoImpl implements MessageRecordDao {
 

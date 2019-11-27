@@ -1,18 +1,18 @@
-package com.wangjie.github.publicwechatdemo.messagedomain.resp;
+package com.wangjie.github.publicwechatdemo.domain;
 
 import lombok.Getter;
 import lombok.Setter;
 
 /**
- * @ClassName RespBaseMessage
- * @Description 返回给用户的消息
+ * @ClassName TextMessage
+ * @Description 回复文本消息
  * @Author 25127
- * @Date 2019/9/7 13:04
+ * @Date 2019/9/7 13:05
  * @Email jie.wang13@hand-china.com
  **/
 @Getter
 @Setter
-public class RespBaseMessage {
+public class TextMessage {
     // 接收方帐号（收到的OpenID）
     private String ToUserName;
     // 开发者微信号
@@ -21,4 +21,6 @@ public class RespBaseMessage {
     private long CreateTime;
     // 消息类型
     private String MsgType;
+    // 回复的消息内容
+    private String Content;
 }

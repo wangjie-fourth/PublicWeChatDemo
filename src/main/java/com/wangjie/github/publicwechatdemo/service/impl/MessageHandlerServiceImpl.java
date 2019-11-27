@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
  * @Date 2019/11/2 13:08
  * @Email jie.wang13@hand-china.com
  **/
-@Service
+//@Service
 public class MessageHandlerServiceImpl implements MessageHandlerService {
 
     /**
