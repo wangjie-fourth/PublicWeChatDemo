@@ -24,22 +24,9 @@ public class MessageRecord {
 
     private String messageContent;
 
-    private Integer isDid;
-
-    private Date notifyTime;
-
     private Date createTime;
 
     private Date updateTime;
-
-
-    public Date getNotifyTime() {
-        return (Date) notifyTime.clone();
-    }
-
-    public void setNotifyTime(Date notifyTime) {
-        this.notifyTime = (Date) notifyTime.clone();
-    }
 
     public Date getCreateTime() {
         return (Date) createTime.clone();

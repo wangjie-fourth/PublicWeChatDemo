@@ -5,9 +5,9 @@ package com.wangjie.github.publicwechatdemo.utils;
  */
 public interface Constant {
 
-    String MESSAGE_TYPE_记录备忘录 = "记录备忘录";
+    String MESSAGE_TYPE_MEMORANDUM = "备忘录";
 
-    String MESSAGE_TYPE_日常花费 = "日常花费";
+    String MESSAGE_TYPE_EXPENSES = "花销";
 
 
 }

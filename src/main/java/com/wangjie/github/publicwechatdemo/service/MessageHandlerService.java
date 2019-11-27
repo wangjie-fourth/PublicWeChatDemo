@@ -1,7 +1,7 @@
 package com.wangjie.github.publicwechatdemo.service;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 public interface MessageHandlerService {
-    String handlerString(HttpServletRequest request);
+    String handlerString(Map requestMap);
 }

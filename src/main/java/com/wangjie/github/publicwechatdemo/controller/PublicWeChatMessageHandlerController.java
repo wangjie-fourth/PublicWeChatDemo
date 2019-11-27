@@ -1,8 +1,10 @@
 package com.wangjie.github.publicwechatdemo.controller;
 
 import com.wangjie.github.publicwechatdemo.domain.TextMessage;
+import com.wangjie.github.publicwechatdemo.service.MessageHandlerService;
 import com.wangjie.github.publicwechatdemo.utils.MessageUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -24,8 +26,8 @@ import java.util.Map;
 @Controller
 public class PublicWeChatMessageHandlerController {
 
-//    @Autowired
-//    private CoreMessageHandlerService coreMessageHandlerService;
+    @Autowired
+    private MessageHandlerService messageHandlerService;
 
     /**
      * 处理微信服务器发来的消息
@@ -42,7 +44,7 @@ public class PublicWeChatMessageHandlerController {
         response.setCharacterEncoding("UTF-8");
 
         // 调用核心业务类接收消息、处理消息：目前只接受文本处理
-        String respXml = processRequest(request);;
+        String respXml = this.processRequest(request);;
 
         // 响应消息
         PrintWriter out = response.getWriter();
@@ -52,10 +54,10 @@ public class PublicWeChatMessageHandlerController {
 
     /**
      * 处理微信发来的请求
-     * @param request
+     * @param request   请求信息
      * @return xml
      */
-    public static String processRequest(HttpServletRequest request) {
+    public String processRequest(HttpServletRequest request) {
         // xml格式的消息数据
         String respXml = null;
         // 默认返回的文本消息内容
@@ -80,7 +82,7 @@ public class PublicWeChatMessageHandlerController {
 
             // 文本消息
             if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_TEXT)) {
-                respContent = "您发送的是文本消息！";
+                respContent = messageHandlerService.handlerString(requestMap);
             }
             // 设置文本消息的内容
             textMessage.setContent(respContent);

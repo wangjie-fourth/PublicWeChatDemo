@@ -34,10 +34,11 @@ public class PublicWeChatDemoApplication {
             @RequestParam("echostr") String echostr
     ) {
         // 通过检验signature对请求进行校验，若校验成功则原样返回echostr，表示接入成功，否则接入失败
-        log.info("验证信息了");
         if (SignUtil.checkSignature(signature, timestamp, nonce)) {
+            log.info("验证信息成功");
             return echostr;
         }
+        log.info("验证信息失败");
         return null;
     }
 
