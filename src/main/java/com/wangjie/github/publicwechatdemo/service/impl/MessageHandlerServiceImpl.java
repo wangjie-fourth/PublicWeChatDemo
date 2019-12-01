@@ -34,7 +34,7 @@ public class MessageHandlerServiceImpl implements MessageHandlerService {
 
     /**
      * 处理文字消息
-     * 同一消息格式【1xxx，xxx，xxx】--中文逗号
+     * 同一消息格式【1xxx xxx xxx】
      *
      * @param requestMap http请求
      * @return 返回返回给前端的参数
@@ -57,9 +57,9 @@ public class MessageHandlerServiceImpl implements MessageHandlerService {
             return "添加成功";
         }
         // 2【记录花销】
-        else if ('2' == index) {// 消息模板【2坐车，花费，20元】
+        else if ('2' == index) {// 消息模板【2坐车 花费 20元】
             log.info("记录今天的花销");
-            String[] contents = content.split("，");
+            String[] contents = content.split(" ");
             messageRecord.setMessageContent(content);
             if (contents[1].equals("花费")) {
                 messageRecord.setMessageType(Constant.MESSAGE_TYPE_EXPENSES_OUT);
