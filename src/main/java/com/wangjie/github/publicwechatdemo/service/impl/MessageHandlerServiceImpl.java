@@ -91,14 +91,14 @@ public class MessageHandlerServiceImpl implements MessageHandlerService {
             }
             StringBuilder result = new StringBuilder();
 
-            Map<Integer, List<MessageRecord>> collect = messageList.stream().sorted(Comparator.comparing(MessageRecord::getCreateTime).reversed()).collect(Collectors.groupingBy(item -> {
+            Map<Integer, List<MessageRecord>> collect = messageList.stream().sorted(Comparator.comparing(MessageRecord::getCreatedTime).reversed()).collect(Collectors.groupingBy(item -> {
                 Calendar calendar = Calendar.getInstance();
-                calendar.setTime(item.getCreateTime());
+                calendar.setTime(item.getCreatedTime());
                 return calendar.get(Calendar.DAY_OF_MONTH);
             }));
             for (Map.Entry<Integer, List<MessageRecord>> entry : collect.entrySet()){
                 for (MessageRecord messageRecord1 : entry.getValue()){
-                    result.append(messageRecord.getMessageContent());
+                    result.append(messageRecord1.getMessageContent());
                     result.append("\n");
                 }
                 result.append("==============================\n");

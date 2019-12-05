@@ -24,23 +24,23 @@ public class MessageRecord {
 
     private String messageContent;
 
-    private Date createTime;
+    private Date createdTime;
 
-    private Date updateTime;
+    private Date updatedTime;
 
-    public Date getCreateTime() {
-        return (Date) createTime.clone();
+    public Date getCreatedTime() {
+        return (Date) createdTime.clone();
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = (Date) createTime.clone();
+    public void setCreatedTime(Date createdTime) {
+        this.createdTime = (Date) createdTime.clone();
     }
 
-    public Date getUpdateTime() {
-        return (Date) updateTime.clone();
+    public Date getUpdatedTime() {
+        return (Date) updatedTime.clone();
     }
 
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = (Date) updateTime.clone();
+    public void setUpdatedTime(Date updatedTime) {
+        this.updatedTime = (Date) updatedTime.clone();
     }
 }
