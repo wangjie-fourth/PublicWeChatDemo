@@ -89,20 +89,7 @@ public class MessageHandlerServiceImpl implements MessageHandlerService {
             if (messageList.size() == 0) {
                 return "暂无花销记录";
             }
-            StringBuilder result = new StringBuilder();
-
-            Map<Integer, List<MessageRecord>> collect = messageList.stream().sorted(Comparator.comparing(MessageRecord::getCreatedTime).reversed()).collect(Collectors.groupingBy(item -> {
-                Calendar calendar = Calendar.getInstance();
-                calendar.setTime(item.getCreatedTime());
-                return calendar.get(Calendar.DAY_OF_MONTH);
-            }));
-            for (Map.Entry<Integer, List<MessageRecord>> entry : collect.entrySet()){
-                for (MessageRecord messageRecord1 : entry.getValue()){
-                    result.append(messageRecord1.getMessageContent());
-                    result.append("\n");
-                }
-                result.append("==========================\n");
-            }
+            StringBuilder result = getResultFor4(messageList);
             log.info(result.toString());
             return result.toString();
         }
@@ -122,6 +109,25 @@ public class MessageHandlerServiceImpl implements MessageHandlerService {
             return "转入完成";
         }
         return null;
+    }
+
+    private StringBuilder getResultFor4(List<MessageRecord> messageList) {
+        StringBuilder result = new StringBuilder();
+        Map<Integer, List<MessageRecord>> collect = messageList.stream().sorted(Comparator.comparing(MessageRecord::getCreatedTime).reversed()).collect(Collectors.groupingBy(item -> {
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(item.getCreatedTime());
+            return calendar.get(Calendar.DAY_OF_MONTH);
+        }));
+        for (Map.Entry<Integer, List<MessageRecord>> entry : collect.entrySet()){
+            result.append("===========");
+            result.append(entry.getKey());
+            result.append("===========\n");
+            for (MessageRecord messageRecord1 : entry.getValue()){
+                result.append(messageRecord1.getMessageContent());
+                result.append("\n");
+            }
+        }
+        return result;
     }
 
     /**
