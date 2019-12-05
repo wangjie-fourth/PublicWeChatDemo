@@ -101,7 +101,7 @@ public class MessageHandlerServiceImpl implements MessageHandlerService {
                     result.append(messageRecord1.getMessageContent());
                     result.append("\n");
                 }
-                result.append("==============================\n");
+                result.append("==========================\n");
             }
             log.info(result.toString());
             return result.toString();
