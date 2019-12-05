@@ -10,9 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -27,9 +25,12 @@ import java.util.stream.Collectors;
 public class MessageHandlerServiceImpl implements MessageHandlerService {
 
     private final MessageRecordMapper messageRecordMapper;
+    private final HistoryExpensesMapper historyExpensesMapper;
 
-    public MessageHandlerServiceImpl(MessageRecordMapper messageRecordMapper) {
+    @Autowired
+    public MessageHandlerServiceImpl(MessageRecordMapper messageRecordMapper, HistoryExpensesMapper historyExpensesMapper) {
         this.messageRecordMapper = messageRecordMapper;
+        this.historyExpensesMapper = historyExpensesMapper;
     }
 
     /**
@@ -88,9 +89,22 @@ public class MessageHandlerServiceImpl implements MessageHandlerService {
             if (messageList.size() == 0) {
                 return "暂无花销记录";
             }
-            String collect = messageList.stream().map(MessageRecord::getMessageContent).collect(Collectors.joining("\n"));
-            log.info(collect);
-            return collect;
+            StringBuilder result = new StringBuilder();
+
+            Map<Integer, List<MessageRecord>> collect = messageList.stream().sorted(Comparator.comparing(MessageRecord::getCreateTime).reversed()).collect(Collectors.groupingBy(item -> {
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(item.getCreateTime());
+                return calendar.get(Calendar.DAY_OF_MONTH);
+            }));
+            for (Map.Entry<Integer, List<MessageRecord>> entry : collect.entrySet()){
+                for (MessageRecord messageRecord1 : entry.getValue()){
+                    result.append(messageRecord.getMessageContent());
+                    result.append("\n");
+                }
+                result.append("==============================\n");
+            }
+            log.info(result.toString());
+            return result.toString();
         }
         // 0 【清空表数据】
         if ('0' == index) {
@@ -109,9 +123,6 @@ public class MessageHandlerServiceImpl implements MessageHandlerService {
         }
         return null;
     }
-
-    @Autowired
-    private HistoryExpensesMapper historyExpensesMapper;
 
     /**
      * 将MessageRecord实体类转换成HistoryExpenses；

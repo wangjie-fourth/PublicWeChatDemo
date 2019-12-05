@@ -76,12 +76,47 @@
             <version>2.21.0</version>
             <scope>test</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.jacoco/jacoco-maven-plugin -->
+        <!--        测试报告生成插件-->
+        <dependency>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>0.8.5</version>
+        </dependency>
+
     </dependencies>
 
     <build>
         <plugins>
+            <!--测试报告生成插件-->
             <plugin>
-                <!--单元测试插件-->
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.5</version>
+                <executions>
+                    <execution>
+                        <id>default-prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>default-report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>default-check</id>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--单元测试插件-->
+            <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.1</version>
                 <configuration>
@@ -91,8 +126,7 @@
                     </excludes>
                 </configuration>
             </plugin>
-
-<!--           执行外围命令-->
+            <!--执行外围命令-->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
@@ -124,35 +158,34 @@
                     <arguments>
                         <argument>-X</argument>
                         <argument>myproject:dist</argument>
-                        ...
                     </arguments>
                 </configuration>
             </plugin>
-<!--            <plugin>-->
-<!--                <artifactId>maven-checkstyle-plugin</artifactId>-->
-<!--                <version>3.0.0</version>-->
-<!--                <configuration>-->
-<!--                    <configLocation>${basedir}/.circleci/checkstyle.xml</configLocation>-->
-<!--                    <includeTestSourceDirectory>true</includeTestSourceDirectory>-->
-<!--                    <enableRulesSummary>false</enableRulesSummary>-->
-<!--                </configuration>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>compile</id>-->
-<!--                        <phase>compile</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>check</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--                <dependencies>-->
-<!--                    <dependency>-->
-<!--                        <groupId>com.puppycrawl.tools</groupId>-->
-<!--                        <artifactId>checkstyle</artifactId>-->
-<!--                        <version>8.22</version>-->
-<!--                    </dependency>-->
-<!--                </dependencies>-->
-<!--            </plugin>-->
+            <!--            <plugin>-->
+            <!--                <artifactId>maven-checkstyle-plugin</artifactId>-->
+            <!--                <version>3.0.0</version>-->
+            <!--                <configuration>-->
+            <!--                    <configLocation>${basedir}/.circleci/checkstyle.xml</configLocation>-->
+            <!--                    <includeTestSourceDirectory>true</includeTestSourceDirectory>-->
+            <!--                    <enableRulesSummary>false</enableRulesSummary>-->
+            <!--                </configuration>-->
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        <id>compile</id>-->
+            <!--                        <phase>compile</phase>-->
+            <!--                        <goals>-->
+            <!--                            <goal>check</goal>-->
+            <!--                        </goals>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
+            <!--                <dependencies>-->
+            <!--                    <dependency>-->
+            <!--                        <groupId>com.puppycrawl.tools</groupId>-->
+            <!--                        <artifactId>checkstyle</artifactId>-->
+            <!--                        <version>8.22</version>-->
+            <!--                    </dependency>-->
+            <!--                </dependencies>-->
+            <!--            </plugin>-->
             <plugin>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>
