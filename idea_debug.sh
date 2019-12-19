@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-echo ">>> git pull"
-git pull origin master
 
 PORT=8081
 
@@ -15,4 +13,4 @@ echo "cd target"
 cd target
 
 echo "java -jar publicwechatdemo-0.0.1-SNAPSHOT.jar"
-java -jar publicwechatdemo-0.0.1-SNAPSHOT.jar > app.log &
+java -jar -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005  publicwechatdemo-0.0.1-SNAPSHOT.jar > app.log &
